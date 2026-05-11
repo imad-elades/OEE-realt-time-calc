@@ -1,0 +1,20 @@
+{
+  "event_id": 31,
+  "timestamp": "2026-05-11T22:04:23.744007",
+  "machine_id": "M005",
+  "machine_name": "Packaging Line",
+  "shift_id": "night",
+  "date": "2026-05-11",
+  "planned_time_min": 11.4,
+  "actual_runtime_min": 10.2,
+  "ideal_cycle_time_sec": 15.0,
+  "actual_cycle_time_sec": 16.11,
+  "total_parts": 32,
+  "good_parts": 30,
+  "defective_parts": 2,
+  "downtime_events": [],
+  "availability_pct": 89.47,
+  "performance_pct": 78.43,
+  "quality_pct": 93.75,
+  "oee_pct": 65.79
+}

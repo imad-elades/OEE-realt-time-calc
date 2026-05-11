@@ -1,0 +1,9 @@
+# OEE Analytics — Python Dependencies
+# Install: pip install -r requirements.txt
+
+# Data generation
+pandas>=2.0.0,<3.0.0
+numpy>=1.24.0,<2.0.0
+
+# PySpark
+pyspark>=3.5.0,<4.0.0

@@ -1,0 +1,20 @@
+{
+  "event_id": 38,
+  "timestamp": "2026-05-11T22:04:37.758321",
+  "machine_id": "M003",
+  "machine_name": "Press Machine",
+  "shift_id": "night",
+  "date": "2026-05-11",
+  "planned_time_min": 5.6,
+  "actual_runtime_min": 5.2,
+  "ideal_cycle_time_sec": 8.0,
+  "actual_cycle_time_sec": 8.26,
+  "total_parts": 33,
+  "good_parts": 30,
+  "defective_parts": 3,
+  "downtime_events": [],
+  "availability_pct": 92.86,
+  "performance_pct": 84.62,
+  "quality_pct": 90.91,
+  "oee_pct": 71.43
+}

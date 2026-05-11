@@ -1,0 +1,20 @@
+{
+  "event_id": 47,
+  "timestamp": "2026-05-11T22:04:55.791987",
+  "machine_id": "M004",
+  "machine_name": "Assembly Robot",
+  "shift_id": "night",
+  "date": "2026-05-11",
+  "planned_time_min": 9.4,
+  "actual_runtime_min": 8.1,
+  "ideal_cycle_time_sec": 25.0,
+  "actual_cycle_time_sec": 29.57,
+  "total_parts": 14,
+  "good_parts": 13,
+  "defective_parts": 1,
+  "downtime_events": [],
+  "availability_pct": 86.17,
+  "performance_pct": 72.02,
+  "quality_pct": 92.86,
+  "oee_pct": 57.62
+}

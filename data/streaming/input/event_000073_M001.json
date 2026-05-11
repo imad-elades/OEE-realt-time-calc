@@ -1,0 +1,20 @@
+{
+  "event_id": 73,
+  "timestamp": "2026-05-11T22:05:47.886258",
+  "machine_id": "M001",
+  "machine_name": "CNC Lathe",
+  "shift_id": "night",
+  "date": "2026-05-11",
+  "planned_time_min": 10.9,
+  "actual_runtime_min": 10.9,
+  "ideal_cycle_time_sec": 12.0,
+  "actual_cycle_time_sec": 12.51,
+  "total_parts": 45,
+  "good_parts": 44,
+  "defective_parts": 1,
+  "downtime_events": [],
+  "availability_pct": 100.0,
+  "performance_pct": 82.57,
+  "quality_pct": 97.78,
+  "oee_pct": 80.73
+}

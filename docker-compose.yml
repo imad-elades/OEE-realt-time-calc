@@ -1,0 +1,96 @@
+# ============================================================================
+# OEE Analytics - Docker Compose
+# Utilise ayoubesswidi/ensabm-tp-bd (Hadoop + Spark + Hive + Kafka + HBase)
+# ============================================================================
+
+version: "3.8"
+
+services:
+  # --------------------------------------------------------------------------
+  # Nœud Big Data — Stack complet (Hadoop HDFS + Spark + Hive)
+  # Sert de namenode, datanode et master Spark
+  # --------------------------------------------------------------------------
+  bigdata-node:
+    image: ayoubesswidi/ensabm-tp-bd:latest
+    hostname: namenode
+    container_name: oee-bigdata
+    ports:
+      - "9870:9870"    # Interface Web HDFS NameNode
+      - "9000:9000"    # RPC HDFS
+      - "8080:8080"    # Interface Web Spark Master
+      - "8088:8088"    # Interface Web YARN Resource Manager
+      - "4040:4040"    # Interface Web Application Spark
+      - "7077:7077"    # RPC Spark Master
+    volumes:
+      - ./data:/data
+      - ./spark:/opt/spark-app
+    environment:
+      - HADOOP_HOME=/usr/local/hadoop
+      - SPARK_HOME=/usr/local/spark
+      - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+    command: >
+      bash -c "
+        # Démarrer HDFS
+        hdfs namenode -format -nonInteractive 2>/dev/null || true
+        start-dfs.sh
+        # Démarrer YARN
+        start-yarn.sh
+        # Démarrer Spark
+        start-master.sh
+        start-worker.sh spark://namenode:7077
+        # Maintenir le conteneur en cours d'exécution
+        echo '=== Nœud Big Data OEE Prêt ==='
+        echo 'Interface HDFS :  http://localhost:9870'
+        echo 'Interface Spark : http://localhost:8080'
+        echo 'Interface YARN :  http://localhost:8088'
+        tail -f /dev/null
+      "
+    networks:
+      - oee-network
+    healthcheck:
+      test: ["CMD-SHELL", "hdfs dfs -ls / || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+
+  # --------------------------------------------------------------------------
+  # Spark Submit — Exécuteur unique du pipeline
+  # --------------------------------------------------------------------------
+  spark-submit:
+    image: ayoubesswidi/ensabm-tp-bd:latest
+    container_name: oee-spark-submit
+    command: >
+      bash -c "
+        echo 'Attente que HDFS soit prêt...'
+        sleep 10
+        echo 'Exécution du pipeline OEE...'
+        cd / && spark-submit
+          --master local[*]
+          --driver-memory 2g
+          --conf spark.sql.shuffle.partitions=8
+          /opt/spark-app/oee_pipeline.py
+        echo 'Pipeline terminé !'
+      "
+    volumes:
+      - ./data:/data
+      - ./spark:/opt/spark-app
+    environment:
+      - HADOOP_HOME=/usr/local/hadoop
+      - SPARK_HOME=/usr/local/spark
+      - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+    working_dir: /
+    networks:
+      - oee-network
+    depends_on:
+      bigdata-node:
+        condition: service_healthy
+    profiles:
+      - pipeline
+
+# ============================================================================
+# Réseaux
+# ============================================================================
+networks:
+  oee-network:
+    driver: bridge

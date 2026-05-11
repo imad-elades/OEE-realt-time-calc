@@ -1,0 +1,20 @@
+{
+  "event_id": 19,
+  "timestamp": "2026-05-11T22:03:59.719939",
+  "machine_id": "M002",
+  "machine_name": "Milling Center",
+  "shift_id": "night",
+  "date": "2026-05-11",
+  "planned_time_min": 8.7,
+  "actual_runtime_min": 7.7,
+  "ideal_cycle_time_sec": 18.0,
+  "actual_cycle_time_sec": 18.53,
+  "total_parts": 23,
+  "good_parts": 21,
+  "defective_parts": 2,
+  "downtime_events": [],
+  "availability_pct": 88.51,
+  "performance_pct": 89.61,
+  "quality_pct": 91.3,
+  "oee_pct": 72.41
+}
