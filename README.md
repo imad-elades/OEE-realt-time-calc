@@ -342,8 +342,8 @@ Les résultats sont persistés au format **Apache Parquet**, assurant :
 
 ## 👨‍💻 Auteur & Contexte
 
-Projet académique développé par :
-* **Imad EL ADES** — Élève Ingénieur en Génie Industriel & Systèmes ([@imad-elades](https://github.com/imad-elades))
+Projet conçu et développé par :
+* **Imad EL ADES (iM@Des)** — Ingénieur en Transformation Digitale Industrielle ([@imad-elades](https://github.com/imad-elades))
 * **Cadre :** Projet Big Data & Décisionnel — Année Universitaire 2025-2026.
 
 ---

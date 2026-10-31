@@ -2,7 +2,7 @@
 
 ## Projet : Pipeline d'Analyse OEE (Overall Equipment Effectiveness)
 
-**Auteur** : Genere automatiquement  
+**Auteur** : Imad EL ADES (iM@Des) — Ingénieur en Transformation Digitale Industrielle  
 **Date** : 20 Avril 2026  
 **Stack** : Python 3.14 | PySpark 3.5.5 | Hadoop 3.x | Docker | Power BI  
 **Statut** : Operationnel - Pipeline execute avec succes
